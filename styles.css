@@ -1,0 +1,54 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.main{
+    background-color: orange;
+    height: 900px;
+    text-align: center;
+    padding: 40px 40px;
+}
+.main .sub_main{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sub_main input{
+    border: 0;
+    outline: 0;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #000;
+    height: 30px;
+}
+
+.sub_main button img{
+    width: 30px;
+    height: 30px;
+    color: #000;
+    cursor: pointer;
+    border-radius: 120%;
+}
+
+.weather{
+display: none;
+}
+
+.weather img{
+    margin-top: 42px;
+
+}
+
+.bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottom img{
+    margin-left: 40px;
+    margin-top: 50px;
+
+}

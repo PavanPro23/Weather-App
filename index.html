@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="styles.css">
+
+<div class="main">
+    <div class="sub_main">
+        <input type="text" placeholder="Enter city">
+        <button><img src="search.png"></button>
+    </div>
+
+    <div class="weather">
+        <img src="sun.jpg" class="weather_img"/>
+
+        <div>
+            <h1 class="temp">23°C</h1>
+            <h2 class="city">Rajahmundry</h2>
+        </div>
+
+        <div class="bottom">
+            <div class="mid">
+                <img src="humidity.png"/>
+                <h1 class="humidity">3%</h1>
+            </div>
+
+            <div class="mid">
+                <img src="wind.jpg"/>
+                <h1 class="wind">3Km/hr</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const apiKey="12a15334ee2ff243c9bf080ae0666f77"
+    const apiUrl="https://api.openweathermap.org/data/2.5/weather?&units=metric&q="
+
+    const searchInp = document.querySelector(".sub_main input")
+    const searchBtn = document.querySelector(".sub_main button")
+    const weatherImg = document.querySelector(".weather_img")
+
+    async function checkWeather(e){
+        const res = await fetch(apiUrl+e+`&appid=${apiKey}`)
+        var data = await res.json()
+        console.log(data)
+        document.querySelector('.city').innerHTML=data.name
+        document.querySelector('.temp').innerHTML=data.main.temp
+        document.querySelector('.wind').innerHTML=data.wind.speed+"Km/hr"
+        document.querySelector('.humidity').innerHTML=data.main.humidity+"%"
+        
+        if(data.weather[0].main==="Clear"){
+            weatherImg.src="clear.jpg"
+        }else if(data.weather[0].main==="Haze"){
+            weatherImg.src="haze.jpg"
+        }else if(data.weather[0].main==="Clouds"){
+            weatherImg.src="rain.jpg"
+        }
+        document.querySelector('.weather').style.display='block'
+    }
+
+    searchBtn.addEventListener('click',()=>{
+        checkWeather(searchInp.value)
+    })
+
+    
+</script>
